@@ -1,0 +1,111 @@
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: #94b3f6
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.calculator {
+    display: flex;
+    width: 300px;
+    background-color: #1d1c2b;
+    border-radius: 20px;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: 3px 5px 12px rgba(0, 8, 26, 0.8), -1px 0 6px rgba(0, 8, 26, 0.8)
+}
+
+.screen {
+    display: flex;
+    flex-direction: column;
+    background-color: #3B3B3B;
+    border-radius: 8px;
+    align-items: flex-end;
+    box-shadow: inset 2px 3px 5px 0px rgb(0 0 0 / 70%);
+    margin: 8px 0 20px 0;
+}
+
+.totalValue,
+.displayValue {
+    color: #FCB31B;
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.buttonGrids {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.allRows {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.rows {
+    display: flex;
+    gap: 9px;
+
+}
+
+.inputButton {
+    flex: 1 1 0;
+    aspect-ratio: 1/1;
+    border: none;
+    border-radius: 50%;
+    background-color: #616161;
+    color: #dfdfdf;
+    box-shadow: 4px 5px 5px 0px rgb(0 0 0 / 50%);
+}
+
+.equalOperator {
+    flex: 2 1 0;
+    border: none;
+    border-radius: 30px;
+    background-color: #616161;
+    color: #dfdfdf;
+    box-shadow: 4px 5px 5px 0px rgb(0 0 0 / 50%);
+}
+
+.inputButton,
+.equalOperator {
+    font-size: 20px;
+    transition: all .15s ease-in-out;
+}
+
+
+.numberInput:hover {
+    cursor: pointer;
+    background: #bdbdbd;
+    color: #212121;
+    transform: translateY(-0.2rem);
+}
+
+.operators:hover {
+    cursor: pointer;
+    background: #39b5e0;
+    color: #212121;
+    transform: translateY(-0.2rem);
+}
+
+.equalOperator:hover {
+    cursor: pointer;
+    background: #FD841f;
+    color: #212121;
+    transform: translateY(-0.2rem);
+}
+
+.clear:hover {
+    cursor: pointer;
+    background: #eb455f;
+    color: #212121;
+    transform: translateY(-0.2rem);
+}

@@ -17,7 +17,7 @@ const operate = function (a, operator, b) {
         total = output
         return total;
     }
-    if (operator === "/") {
+    if (operator === "÷") {
         divide(a, b);
         total = output;
         return total;

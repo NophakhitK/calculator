@@ -1,18 +1,23 @@
 let output = 0;
 let total = 0;
+let storedValue = "";
 
 const upperScreenValue = document.querySelector('.upperScreenDisplay');
 const displayValueSelected = document.querySelector('.displayValue')
-
-const allInputs = document.querySelectorAll('.inputButton');
+const allInputs = document.querySelectorAll('.rows > button');
+const allOperators = document.querySelectorAll('.operators');
 
 const valueSelected = function () {
     for (const input of allInputs) {
-        input.addEventListener('click', () => {
-            displayValueSelected.textContent = input.textContent
+        input.addEventListener('click', function (e) {
+            checkOperator();
+            storedValue += e.target.value;
+            displayValueSelected.textContent = storedValue;
         });
     }
 }
+
+
 
 
 const operate = function (a, operator, b) {
@@ -53,4 +58,16 @@ const multiply = function (a, b) {
 const divide = function (a, b) {
     return output = a / b;
 }
+
+// const checkOperator = function () {
+//     for (const operator of allOperators) {
+//         if (storedValue.includes(operator.value)) {
+//             return true;
+//         } else {
+//             return false;
+//         }
+//     }
+// }
+
+valueSelected();
 

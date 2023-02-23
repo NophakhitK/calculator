@@ -1,6 +1,20 @@
 let output = 0;
 let total = 0;
 
+const upperScreenValue = document.querySelector('.upperScreenDisplay');
+const displayValueSelected = document.querySelector('.displayValue')
+
+const allInputs = document.querySelectorAll('.inputButton');
+
+const valueSelected = function () {
+    for (const input of allInputs) {
+        input.addEventListener('click', () => {
+            displayValueSelected.textContent = input.textContent
+        });
+    }
+}
+
+
 const operate = function (a, operator, b) {
     if (operator === "+") {
         add(a, b);

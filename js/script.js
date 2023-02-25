@@ -21,9 +21,11 @@ const allOperators = document.getElementsByClassName('operators')
 const valueSelected = function () {
     for (const input of allInputs) {
         input.addEventListener('click', function (e) {
-            displayValue += e.target.value;
-            displayValueSelected.textContent = displayValue;
-            console.log(displayValue);
+            if (e.target.value !== '=') {
+                displayValue += e.target.value;
+                displayValueSelected.textContent = displayValue;
+                console.log(displayValue);
+            }
         });
     }
 }

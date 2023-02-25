@@ -17,19 +17,22 @@ const multiplyOperator = document.getElementById('multiplyOperator');
 const divideOperator = document.getElementById('divideOperator');
 const equalOperator = document.getElementById('equalOperator');
 const allOperators = document.getElementsByClassName('operators')
+const clearButton = document.getElementById('clearAll');
 
-const valueSelected = function () {
-    for (const input of allInputs) {
-        input.addEventListener('click', function (e) {
-            if (e.target.value !== '=') {
-                displayValue += e.target.value;
-                displayValueSelected.textContent = displayValue;
-                console.log(displayValue);
-            }
-        });
-    }
+
+for (const input of allInputs) {
+    input.addEventListener('click', function (e) {
+        if (e.target.value === '=') {
+
+        } else if (e.target.value === 'AC') {
+            clearAll();
+        } else {
+            displayValue += e.target.value;
+            displayValueSelected.textContent = displayValue;
+            console.log(displayValue);
+        }
+    });
 }
-
 
 
 
@@ -89,6 +92,7 @@ equalOperator.addEventListener('click', () => {
     operate(a, operator, b);
     console.log(total);
 });
+
 
 const findPlusOperatorIndex = function () {
     const plusOperatorIndex = storedValue.indexOf(plusOperator.value);
@@ -155,7 +159,11 @@ const operate = function (a, operator, b) {
     return total;
 };
 
+const clearAll = function () {
+    total = 0;
+    displayValue = "";
+    storedValue = "";
+    displayValueSelected.textContent = displayValue;
+}
 
-
-valueSelected();
 

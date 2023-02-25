@@ -32,6 +32,10 @@ const valueSelected = function () {
 
 
 const operate = function (a, operator, b) {
+    sliceString();
+    a = parseInt(firstPart);
+    operator = operatorChosen;
+    b = parseInt(secondPart);
     if (operator === "+") {
         add(a, b);
         total = output;
@@ -83,15 +87,12 @@ const divide = function (a, b) {
 
 
 
-const findIndexOperator = function () {
-    const plusOperatorIndex = displayValue.indexOf(plusOperator);
-    const subtractOperatorIndex = displayValue.indexOf(subtractOperator);
-    const multiplyOperatorIndex = displayValue.indexOf(multiplyOperator);
-    const divideOperatorIndex = displayValue.indexOf(divideOperator);
-
-}
-
-
+// const findIndexOperator = function () {
+//     const plusOperatorIndex = displayValue.indexOf(plusOperator);
+//     const subtractOperatorIndex = displayValue.indexOf(subtractOperator);
+//     const multiplyOperatorIndex = displayValue.indexOf(multiplyOperator);
+//     const divideOperatorIndex = displayValue.indexOf(divideOperator);
+// }
 
 
 const sliceString = function () {

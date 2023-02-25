@@ -43,23 +43,24 @@ for (const allOperator of allOperators) {
             firstPart = storedValue.slice(0, index);
             operatorChosen = allOperator.value;
         } if (allOperator.value === subtractOperator.value) {
+            storedValue = displayValue;
+            storedValue += subtractOperator.value;
             index = findSubtractOperatorIndex();
             firstPart = displayValue.slice(0, index);
-            console.log(firstPart);
             operatorChosen = allOperator.value;
-            console.log(operatorChosen);
         } if (allOperator.value === multiplyOperator.value) {
+            storedValue = displayValue;
+            storedValue += multiplyOperator.value;
             index = findMultiplyOperatorIndex();
             firstPart = displayValue.slice(0, index);
-            console.log(firstPart);
             operatorChosen = allOperator.value;
-            console.log(operatorChosen);
         } if (allOperator.value === divideOperator.value) {
+            storedValue = displayValue;
+            storedValue += divideOperator.value;
             index = findDivideOperatorIndex();
             firstPart = displayValue.slice(0, index);
-            console.log(firstPart);
             operatorChosen = allOperator.value;
-            console.log(operatorChosen);
+
         }
     })
 }
@@ -68,8 +69,10 @@ for (const allOperator of allOperators) {
 const sliceStringSecondPart = function () {
     storedValue = displayValue;
     storedValue += equalOperator.value;
+    console.log(storedValue);
+    console.log(index);
     equalIndex = findEqualOperatorIndex();
-    secondPart = storedValue.slice(index, equalIndex);
+    secondPart = storedValue.slice(index + 1, equalIndex);
 }
 
 equalOperator.addEventListener('click', () => {
@@ -93,17 +96,17 @@ const findPlusOperatorIndex = function () {
 }
 
 const findSubtractOperatorIndex = function () {
-    const subtractOperatorIndex = displayValue.indexOf(subtractOperator.value);
+    const subtractOperatorIndex = storedValue.indexOf(subtractOperator.value);
     return subtractOperatorIndex;
 }
 
 const findMultiplyOperatorIndex = function () {
-    const multiplyOperatorIndex = displayValue.indexOf(multiplyOperator.value);
+    const multiplyOperatorIndex = storedValue.indexOf(multiplyOperator.value);
     return multiplyOperatorIndex;
 }
 
 const findDivideOperatorIndex = function () {
-    const divideOperatorIndex = displayValue.indexOf(divideOperator.value);
+    const divideOperatorIndex = storedValue.indexOf(divideOperator.value);
     return divideOperatorIndex;
 }
 

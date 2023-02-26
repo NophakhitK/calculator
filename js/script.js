@@ -1,6 +1,7 @@
 const calculator = document.querySelector('.calculator');
 const buttonKeys = calculator.querySelectorAll('.rows > button');
 const upperScreenDisplay = document.querySelector('.displayValue');
+const operatorKey = calculator.dataset.operatorKey;
 
 for (const buttonKey of buttonKeys) {
     buttonKey.addEventListener('click', function (e) {
@@ -15,23 +16,18 @@ for (const buttonKey of buttonKeys) {
                 upperScreenDisplay.textContent = displayedSelected + keyContent;
             }
         }
+
         if (action === 'decimal') {
             upperScreenDisplay.textContent = displayedSelected + '.'
         }
-        if (action === 'plus') {
-            console.log('plus');
-        }
-        if (action === 'subtract') {
-            console.log('subtract');
-        }
-        if (action === 'multiply') {
-            console.log('multiply');
-        }
-        if (action === 'divide') {
-            console.log('divide');
-        }
-        if (action === 'percentage') {
-            console.log('percentage');
+        if (
+            action === 'plus' ||
+            action === 'subtract' ||
+            action === 'multiply' ||
+            action === 'divide' ||
+            action === 'percentage') {
+            calculator.dataset.operatorKey = 'operator';
+            console.log(calculator.dataset.operatorKey);
         }
 
         if (action === 'clear') {

@@ -87,8 +87,9 @@ equalOperator.addEventListener('click', () => {
     operator = operatorChosen;
     sliceStringSecondPart();
     b = parseFloat(secondPart);
-    operate(a, operator, b);
+    total = operate(a, operator, b);
     console.log(total);
+
     displayTotalValue.textContent = total;
 });
 

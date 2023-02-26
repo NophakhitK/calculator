@@ -24,34 +24,35 @@
             <div class="buttonGrids">
                 <div class="allRows">
                     <div class="rows">
-                        <button value="AC" id="clearAll" class="button clear">AC</button>
-                        <button value="C" id="cleardisplay" class="button clear">C</button>
-                        <button value="%" id="percentage" class="button operators">%</button>
-                        <button value="÷" id="divideOperator" class="button inputButton operators">÷</button>
+                        <button id="clearAll" class="button clear" data-action="clearAll">AC</button>
+                        <button id="cleardisplay" class="button clear" data-action="clear">C</button>
+                        <button id="percentage" class="button operators" data-action="percentage">%</button>
+                        <button id="divideOperator" class="button inputButton operators" data-action="divide">÷</button>
                     </div>
                     <div class="rows">
-                        <button value="7" class="button numberInput">7</button>
-                        <button value="8" class="button numberInput">8</button>
-                        <button value="9" class="button numberInput">9</button>
-                        <button value="x" id="multiplyOperator" class="button inputButton operators">x</button>
+                        <button class="button numberInput">7</button>
+                        <button class="button numberInput">8</button>
+                        <button class="button numberInput">9</button>
+                        <button id="multiplyOperator" class="button inputButton operators"
+                            data-action="multiply">x</button>
                     </div>
                     <div class="rows">
-                        <button value="4" class="button numberInput">4</button>
-                        <button value="5" class="button numberInput">5</button>
-                        <button value="6" class="button numberInput">6</button>
-                        <button value="-" id="subtractOperator" class="button inputButton operators">-</button>
+                        <button class="button numberInput">4</button>
+                        <button class="button numberInput">5</button>
+                        <button class="button numberInput">6</button>
+                        <button id="subtractOperator" class="button inputButton operators"
+                            data-action="subtract">-</button>
                     </div>
                     <div class="rows">
-                        <button value="1" class="button numberInput">1</button>
-                        <button value="2" class="button numberInput">2</button>
-                        <button value="3" class="button numberInput">3</button>
-                        <button value="+" id="plusOperator" class="button inputButton operators">+</button>
+                        <button class="button numberInput">1</button>
+                        <button class="button numberInput">2</button>
+                        <button class="button numberInput">3</button>
+                        <button id="plusOperator" class="button inputButton operators" data-action="plus">+</button>
                     </div>
                     <div class="rows">
-                        <button value="0" class="button numberInput">0</button>
-                        <button value="." class="button numberInput">.</button>
-                        <button value="=" id="equalOperator" class="inputButton equalOperator"
-                            onclick="operate()">=</button>
+                        <button class="button numberInput">0</button>
+                        <button class="button numberInput" data-action="decimal">.</button>
+                        <button id="equalOperator" class="inputButton equalOperator" data-action="calculate"">=</button>
                     </div>
                 </div>
             </div>
@@ -60,7 +61,7 @@
 
 
 
-    <script src="js/script.js"></script>
+    <script src=" js/script.js"></script>
 </body>
 
 </html>

@@ -1,45 +1,60 @@
 const calculator = document.querySelector('.calculator');
 const buttonKeys = calculator.querySelectorAll('.rows > button');
 const upperScreenDisplay = document.querySelector('.displayValue');
-const operatorKey = calculator.dataset.operatorKey;
+let a = 0;
+let b = 0;
+let total = 0;
 
 for (const buttonKey of buttonKeys) {
-    buttonKey.addEventListener('click', function (e) {
-        const key = e.target;
-        const action = key.dataset.action;
-        const keyContent = key.textContent;
-        const displayedSelected = upperScreenDisplay.textContent
-        if (!action) {
-            if (displayedSelected === '0') {
-                upperScreenDisplay.textContent = keyContent;
-            } else if (displayedSelected !== '0') {
-                upperScreenDisplay.textContent = displayedSelected + keyContent;
+    buttonKey.addEventListener('click', e => {
+        if (e.target.matches('button')) {
+            const key = e.target;
+            const action = key.dataset.action;
+            const keyContent = key.textContent;
+            const displayedSelected = upperScreenDisplay.textContent
+            const previousKeyType = calculator.dataset.previousKeyType
+            if (!action) {
+                if (displayedSelected === '0' || previousKeyType === 'operator') {
+                    upperScreenDisplay.textContent = keyContent;
+                } else {
+                    upperScreenDisplay.textContent = displayedSelected + keyContent;
+                }
+            }
+
+            if (
+                action === 'plus' ||
+                action === 'subtract' ||
+                action === 'multiply' ||
+                action === 'divide' ||
+                action === 'percentage'
+            ) {
+                buttonKey.classList.add('pressed');
+                calculator.dataset.firstValue = displayedSelected
+                console.log(displayedSelected);
+                calculator.dataset.operator = action
+                console.log(action);
+                calculator.dataset.previousKeyType = 'operator';
+            }
+            if (action === 'decimal') {
+                if (!displayedSelected.includes('.'))
+                    upperScreenDisplay.textContent = displayedSelected + '.'
+            }
+            if (action === 'clear') {
+                console.log('clear');
+            }
+            if (action === 'clearAll') {
+                console.log('clearAll');
+            }
+            if (action === 'calculate') {
+                const firstValue = calculator.dataset.firstValue
+                const operator = calculator.dataset.operator
+                const secondValue = displayedSelected;
+                a = firstValue;
+                b = secondValue;
+                total = operate(a, operator, b)
+                upperScreenDisplay.textContent = total;
             }
         }
-
-        if (action === 'decimal') {
-            upperScreenDisplay.textContent = displayedSelected + '.'
-        }
-        if (
-            action === 'plus' ||
-            action === 'subtract' ||
-            action === 'multiply' ||
-            action === 'divide' ||
-            action === 'percentage') {
-            calculator.dataset.operatorKey = 'operator';
-            console.log(calculator.dataset.operatorKey);
-        }
-
-        if (action === 'clear') {
-            console.log('clear');
-        }
-        if (action === 'clearAll') {
-            console.log('clearAll');
-        }
-        if (action === 'calculate') {
-            console.log('calculate')
-        }
-
     });
 }
 
@@ -47,38 +62,38 @@ for (const buttonKey of buttonKeys) {
 
 
 const add = function (a, b) {
-    return output = a + b;
+    return output = parseFloat(a) + parseFloat(b);
 };
 
 const subtract = function (a, b) {
-    return output = a - b;
+    return output = parseFloat(a) - parseFloat(b);
 }
 
 const multiply = function (a, b) {
-    return output = a * b;
+    return output = parseFloat(a) * parseFloat(b);
 }
 
 const divide = function (a, b) {
-    return output = a / b;
+    return output = parseFloat(a) / parseFloat(b);
 }
 
 const operate = function (a, operator, b) {
-    if (operator === "+") {
+    if (operator === "plus") {
         add(a, b);
         total = output;
         return total;
     }
-    if (operator === "-") {
+    if (operator === "subtract") {
         subtract(a, b);
         total = output;
         return total;
     }
-    if (operator === "x") {
+    if (operator === "multiply") {
         multiply(a, b);
         total = output
         return total;
     }
-    if (operator === "÷") {
+    if (operator === "divide") {
         divide(a, b);
         total = output;
         return total;

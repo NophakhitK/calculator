@@ -88,7 +88,7 @@ body {
     transform: translateY(-0.2rem);
 }
 
-.operators:hover {
+.operator:hover {
     cursor: pointer;
     background: #39b5e0;
     color: #212121;
@@ -107,6 +107,11 @@ body {
     background: #eb455f;
     color: #212121;
     transform: translateY(-0.2rem);
+}
+
+.pressed {
+    background: #39b5e0;
+    color: #212121;
 }
 
 /* .calculator__keys > *:active::before,

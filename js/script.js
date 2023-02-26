@@ -7,8 +7,9 @@ let secondPart = 0;
 let operatorChosen = "";
 let index = 0;
 
-const upperScreenValue = document.querySelector('.upperScreenDisplay');
-const displayValueSelected = document.querySelector('.displayValue')
+const displayValueSelected = document.querySelector('.displayValue');
+const displayTotalValue = document.querySelector('.totalValueDisplay');
+
 const allInputs = document.querySelectorAll('.rows > button');
 
 const plusOperator = document.getElementById('plusOperator');
@@ -26,7 +27,10 @@ for (const input of allInputs) {
 
         } else if (e.target.value === 'AC') {
             clearAll();
-        } else {
+        } else if (e.target.value === 'C') {
+            clearDisplay();
+        }
+        else {
             displayValue += e.target.value;
             displayValueSelected.textContent = displayValue;
             console.log(displayValue);
@@ -79,18 +83,13 @@ const sliceStringSecondPart = function () {
 }
 
 equalOperator.addEventListener('click', () => {
-    a = parseInt(firstPart);
-    console.log(a);
-    console.log(typeof a);
+    a = parseFloat(firstPart);
     operator = operatorChosen;
-    console.log(operator);
-    console.log(typeof operator);
     sliceStringSecondPart();
-    b = parseInt(secondPart);
-    console.log(b);
-    console.log(typeof b)
+    b = parseFloat(secondPart);
     operate(a, operator, b);
     console.log(total);
+    displayTotalValue.textContent = total;
 });
 
 
@@ -164,6 +163,12 @@ const clearAll = function () {
     displayValue = "";
     storedValue = "";
     displayValueSelected.textContent = displayValue;
+    displayTotalValue.textContent = storedValue;
 }
 
+const clearDisplay = function () {
+    displayValue = "";
+    storedValue = "";
+    displayValueSelected.textContent = displayValue;
+}
 

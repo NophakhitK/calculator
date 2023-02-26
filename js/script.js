@@ -27,11 +27,12 @@ for (const buttonKey of buttonKeys) {
                 action === 'subtract' ||
                 action === 'multiply' ||
                 action === 'divide' ||
-                action === 'percentage'
+                action === 'power'
             ) {
                 calculator.dataset.firstValue = displayedSelected
                 calculator.dataset.operator = action
                 calculator.dataset.previousKeyType = 'operator';
+
             }
             if (action === 'decimal') {
                 if (!displayedSelected.includes('.')) {
@@ -81,6 +82,12 @@ const divide = function (a, b) {
     return output = parseFloat(a) / parseFloat(b);
 }
 
+const power = function (a, b) {
+
+    return output = (parseFloat(a)) ** (parseFloat(b));
+
+}
+
 const operate = function (a, operator, b) {
     if (operator === "plus") {
         add(a, b);
@@ -99,6 +106,11 @@ const operate = function (a, operator, b) {
     }
     if (operator === "divide") {
         divide(a, b);
+        total = output;
+        return roundLongDecimals(total);
+    }
+    if (operator === 'power') {
+        power(a, b)
         total = output;
         return roundLongDecimals(total);
     }

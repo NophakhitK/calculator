@@ -17,6 +17,7 @@ for (const buttonKey of buttonKeys) {
             if (!action) {
                 // Cant write more than 1 digit after operator;
                 if (displayedSelected === '0' || previousKeyType === 'operator') {
+                    delete calculator.dataset.previousKeyType;
                     upperScreenDisplay.textContent = keyContent;
                 } else {
                     upperScreenDisplay.textContent = displayedSelected + keyContent;
@@ -102,8 +103,8 @@ const operate = function (a, operator, b) {
 
 function roundLongDecimals(total) {
     if (total.toString().indexOf('.') !== -1) {
-        if (total.toString().split('.')[1].length > 5) {
-            return total.toFixed(5);
+        if (total.toString().split('.')[1].length > 4) {
+            return total.toFixed(4);
         }
     }
     return total;

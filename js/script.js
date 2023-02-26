@@ -1,6 +1,7 @@
 const calculator = document.querySelector('.calculator');
 const buttonKeys = calculator.querySelectorAll('.rows > button');
 const upperScreenDisplay = document.querySelector('.displayValue');
+
 let a = 0;
 let b = 0;
 let total = 0;
@@ -11,16 +12,16 @@ for (const buttonKey of buttonKeys) {
             const key = e.target;
             const action = key.dataset.action;
             const keyContent = key.textContent;
-            const displayedSelected = upperScreenDisplay.textContent
-            const previousKeyType = calculator.dataset.previousKeyType
+            const previousKeyType = calculator.dataset.previousKeyType;
+            const displayedSelected = upperScreenDisplay.textContent;
             if (!action) {
+                // Cant write more than 1 digit after operator;
                 if (displayedSelected === '0' || previousKeyType === 'operator') {
                     upperScreenDisplay.textContent = keyContent;
                 } else {
                     upperScreenDisplay.textContent = displayedSelected + keyContent;
                 }
             }
-
             if (
                 action === 'plus' ||
                 action === 'subtract' ||
@@ -28,11 +29,8 @@ for (const buttonKey of buttonKeys) {
                 action === 'divide' ||
                 action === 'percentage'
             ) {
-                buttonKey.classList.add('pressed');
                 calculator.dataset.firstValue = displayedSelected
-                console.log(displayedSelected);
                 calculator.dataset.operator = action
-                console.log(action);
                 calculator.dataset.previousKeyType = 'operator';
             }
             if (action === 'decimal') {
@@ -54,6 +52,7 @@ for (const buttonKey of buttonKeys) {
                 total = operate(a, operator, b)
                 upperScreenDisplay.textContent = total;
             }
+
         }
     });
 }
@@ -81,23 +80,31 @@ const operate = function (a, operator, b) {
     if (operator === "plus") {
         add(a, b);
         total = output;
-        return total;
+        return roundLongDecimals(total);
     }
     if (operator === "subtract") {
         subtract(a, b);
         total = output;
-        return total;
+        return roundLongDecimals(total);
     }
     if (operator === "multiply") {
         multiply(a, b);
         total = output
-        return total;
+        return roundLongDecimals(total);
     }
     if (operator === "divide") {
         divide(a, b);
         total = output;
-        return total;
+        return roundLongDecimals(total);
     }
     return total;
 };
 
+function roundLongDecimals(total) {
+    if (total.toString().indexOf('.') !== -1) {
+        if (total.toString().split('.')[1].length > 5) {
+            return total.toFixed(5);
+        }
+    }
+    return total;
+}

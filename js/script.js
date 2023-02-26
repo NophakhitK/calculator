@@ -1,8 +1,6 @@
 const calculator = document.querySelector('.calculator');
 const buttonKeys = calculator.querySelectorAll('.rows > button');
 const upperScreenDisplay = document.querySelector('.displayValue');
-const zero = 0
-upperScreenDisplay.textContent = zero;
 
 for (const buttonKey of buttonKeys) {
     buttonKey.addEventListener('click', function (e) {
@@ -11,15 +9,13 @@ for (const buttonKey of buttonKeys) {
         const keyContent = key.textContent;
         const displayedSelected = upperScreenDisplay.textContent
         if (!action) {
-            if (displayedSelected == 0) {
-                // Look for ways to use triple equal
+            if (displayedSelected === '0') {
                 upperScreenDisplay.textContent = keyContent;
-            } else if (displayedSelected !== 0) {
+            } else if (displayedSelected !== '0') {
                 upperScreenDisplay.textContent = displayedSelected + keyContent;
             }
         }
         if (action === 'decimal') {
-            // Decimal point not working properly for 0.xxxxx
             upperScreenDisplay.textContent = displayedSelected + '.'
         }
         if (action === 'plus') {

@@ -15,13 +15,12 @@ for (const buttonKey of buttonKeys) {
             const previousKeyType = calculator.dataset.previousKeyType;
             const displayedSelected = upperScreenDisplay.textContent;
             if (!action) {
-                // Cant write more than 1 digit after operator;
                 if (displayedSelected === '0' || previousKeyType === 'operator') {
-                    delete calculator.dataset.previousKeyType;
                     upperScreenDisplay.textContent = keyContent;
                 } else {
                     upperScreenDisplay.textContent = displayedSelected + keyContent;
                 }
+                calculator.dataset.previousKeyType = 'number';
             }
             if (
                 action === 'plus' ||
@@ -35,8 +34,13 @@ for (const buttonKey of buttonKeys) {
                 calculator.dataset.previousKeyType = 'operator';
             }
             if (action === 'decimal') {
-                if (!displayedSelected.includes('.'))
+                if (!displayedSelected.includes('.')) {
                     upperScreenDisplay.textContent = displayedSelected + '.'
+                }
+                if (previousKeyType === 'operator') {
+                    upperScreenDisplay.textContent = '0.'
+                }
+                calculator.dataset.previousKeyType = 'decimal';
             }
             if (action === 'clear') {
                 console.log('clear');

@@ -83,9 +83,7 @@ const divide = function (a, b) {
 }
 
 const power = function (a, b) {
-
     return output = (parseFloat(a)) ** (parseFloat(b));
-
 }
 
 const operate = function (a, operator, b) {
@@ -100,7 +98,7 @@ const operate = function (a, operator, b) {
         return roundLongDecimals(total);
     }
     if (operator === "multiply") {
-        multiply(a, b);
+        multiply(a, b)
         total = output
         return roundLongDecimals(total);
     }

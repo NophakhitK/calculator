@@ -95,6 +95,12 @@ body {
     transform: translateY(-0.2rem);
 }
 
+.buttonSelected {
+    background: #39b5e0;
+    color: #212121;
+    transform: translateY(-0.2rem);
+}
+
 .equalOperator:hover {
     cursor: pointer;
     background: #FD841f;
